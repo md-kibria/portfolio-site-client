@@ -1,14 +1,10 @@
 import styles from './Navigation.module.scss'
 import Link from 'next/link'
-import { useContext, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { BHContext } from '../../pages/_app'
 import axios from 'axios'
 
 const Navigation = ({ home }) => {
-
-    // Backend Host 
-    let host = useContext(BHContext)
 
     const [show, setShow] = useState(false)
     const [showNavBg, setShowNavBg] = useState(false)
@@ -55,7 +51,7 @@ const Navigation = ({ home }) => {
                     <div className={styles.img}>
                         {logo ? (
                             <Image
-                                src={`${host}/uploads/${logo}`}
+                                src={`${process.env.NEXT_PUBLIC_LINK}/uploads/${logo}`}
                                 alt=""
                                 height={30}
                                 width={100}

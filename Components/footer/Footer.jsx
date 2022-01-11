@@ -5,12 +5,9 @@ import Image from 'next/image'
 import { useForm } from 'react-hook-form'
 import { useContext, useState } from 'react'
 import axios from 'axios'
-import { BHContext } from '../../pages/_app'
+
 
 const Footer = ({ siteData }) => {
-
-    // Backend Host
-    let host = useContext(BHContext)
 
     // Data from backend
     const { socialLinks, copyright, footerLogo } = siteData.data
@@ -129,7 +126,7 @@ const Footer = ({ siteData }) => {
                     {footerLogo ? (
                         <div className={styles.img}>
                             <Image
-                                src={`${host}/uploads/${footerLogo}`}
+                                src={`${process.env.NEXT_PUBLIC_LINK}/uploads/${footerLogo}`}
                                 height={20}
                                 width={70}
                             />

@@ -1,12 +1,8 @@
 import Link from 'next/link'
 import styles from './ProjectDetails.module.scss'
-import { BHContext } from '../../pages/_app'
-import { useContext } from 'react'
 
 const ProjectDetails = ({ project }) => {
 
-    // Backen Host Link
-    const host = useContext(BHContext)
     return (
         <div className={styles.details}>
             <h1 className={styles.title}>{project.title}</h1>
@@ -15,7 +11,7 @@ const ProjectDetails = ({ project }) => {
             <div className={styles.details_main}>
                 {/* Image Section */}
                 <div className={styles.img_section}>
-                    <img src={`${host}/uploads/${project.thumbnail}`} alt="" />
+                    <img src={`${process.env.NEXT_PUBLIC_LINK}/uploads/${project.thumbnail}`} alt="" />
                 </div>
 
                 {/* Details Section */}

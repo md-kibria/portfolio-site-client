@@ -2,7 +2,7 @@
 const axios = require('axios')
 
 let axiosConfig = (host, token) => {
-    axios.defaults.baseURL = host
+    axios.defaults.baseURL = host || ''
 }
 
 export default axiosConfig

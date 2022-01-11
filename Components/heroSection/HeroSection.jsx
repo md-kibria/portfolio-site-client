@@ -2,12 +2,8 @@ import React, { useContext } from 'react'
 import Link from 'next/link'
 import styles from './HeroSection.module.scss'
 import withSiteData from '../HOC/index'
-import { BHContext } from '../../pages/_app'
 
 const Hero = ({ siteData }) => {
-
-    // Backend Host
-    const host = useContext(BHContext)
 
     if (siteData) {
         return (
@@ -31,7 +27,7 @@ const Hero = ({ siteData }) => {
                     </div>
                     {/* Hero Image Section */}
                     <div className={styles.hero_img}>
-                        <img src={siteData.data.heroImg && `${host}/uploads/${siteData.data.heroImg}`} alt="" />
+                        <img src={siteData.data.heroImg && `${process.env.NEXT_PUBLIC_LINK}/uploads/${siteData.data.heroImg}`} alt="" />
                     </div>
                 </div>
                 <img className={styles.header_bottom_path} src="/img/Path 1.png" alt="" />

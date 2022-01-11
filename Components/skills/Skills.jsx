@@ -1,8 +1,7 @@
 import SkillItem from './skillItem/skillItem'
 import styles from './Skills.module.scss'
 import axios from 'axios'
-import { useEffect, useReducer, useContext } from 'react'
-import { BHContext } from '../../pages/_app'
+import { useEffect, useReducer } from 'react'
 
 // Initial State
 const initialState = {
@@ -34,9 +33,6 @@ const reducer = (state, action) => {
 }
 
 const Skills = () => {
-
-    // Use Context
-    const hostContext = useContext(BHContext)
 
     // Defind Use Reducer
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -81,7 +77,7 @@ const Skills = () => {
 
                 { state.skills.map(skill => (
                         // Skill Item
-                        <SkillItem key={skill._id} img={`${hostContext}/uploads/${skill.img}`} title={skill.title} desc={skill.description} />
+                        <SkillItem key={skill._id} img={`${process.env.NEXT_PUBLIC_LINK}/uploads/${skill.img}`} title={skill.title} desc={skill.description} />
                     ))
                 }
 

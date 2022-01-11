@@ -2,15 +2,11 @@ import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import styles from './About.module.scss'
 import withSiteData from '../HOC/index'
-import {BHContext} from '../../pages/_app'
 
 const About = ({ siteData }) => {
 
     // Is Mid State
     const [isMid, setIsMid] = useState(false)
-
-    // Host
-    const host = useContext(BHContext)
 
     useEffect(() => {
 
@@ -34,7 +30,7 @@ const About = ({ siteData }) => {
                 {/* About Image Section */}
                 <div className={styles.about_img}>
                     <div className={styles.img_container}>
-                        <img src={siteData.data.aboutImg && `${host}/uploads/${siteData.data.aboutImg}`} alt="" />
+                        <img src={siteData.data.aboutImg && `${process.env.NEXT_PUBLIC_LINK}/uploads/${siteData.data.aboutImg}`} alt="" />
                     </div>
                 </div>
 

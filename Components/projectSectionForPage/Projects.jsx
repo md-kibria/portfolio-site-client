@@ -2,8 +2,7 @@ import styles from './Projects.module.scss'
 
 import SingleProject from '../singleProject/SingleProject'
 import Link from 'next/link'
-import { useContext } from 'react'
-import { BHContext } from '../../pages/_app'
+
 
 const Projects = ({ projects }) => {
 
@@ -21,9 +20,6 @@ const Projects = ({ projects }) => {
     // console.log({ totalPages, numberOfEnd, numberOfStart })
     console.log({ totalPages, numberOfEnd, numberOfStart })
 
-    // Backend Host
-    const host = useContext(BHContext)
-
     return (
         <div className={styles.projects}>
             {/* Projects Title */}
@@ -35,7 +31,7 @@ const Projects = ({ projects }) => {
 
                     <div className={styles.projects_container}>
                         {projects.map(project => (
-                            <SingleProject key={project._id} img={project.thumbnail && `${host}/uploads/${project.thumbnail}`} title={project.title} desc={project.description} />
+                            <SingleProject key={project._id} img={project.thumbnail && `${process.env.NEXT_PUBLIC_LINK}/uploads/${project.thumbnail}`} title={project.title} desc={project.description} />
                         ))}
                     </div>
 
