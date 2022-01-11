@@ -1,0 +1,273 @@
+@mixin subTitle {
+    color: #7A6FF2;
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.details {
+    padding: 125px 150px;
+
+    & .title {
+        font-size: 35px;
+        color: #7A6FF2;
+    }
+
+    #{&}_main {
+        display: flex;
+        align-items: center;
+        margin-top: 50px;
+
+        // Image Section
+        & .img_section {
+            width: 50%;
+            box-shadow: 1px 1px 10px pink;
+            // background-color: orangered;
+
+            & img {
+                width: 100%;
+            }
+        }
+
+        // Details Sectin
+        & .details_section {
+            width: 50%;
+            // border: 1px solid orange;
+            padding: 0 50px;
+
+            & .sub_section {
+                margin: 15px 0;
+                & h3 {
+                    color: #9990f8;
+                    font-size: 22px;
+                    margin: 5px 0;
+                }
+
+                & p {
+                    color: #919191;
+                    margin: 0px 0;
+                }
+            }
+        }
+    }
+
+    // screenshorts
+    & .screenshorts {
+        margin-top: 50px;
+
+        h3 {
+            @include subTitle;
+        }
+
+        & .screenshorts_container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+
+            & .short_item {
+                width: 100%;
+                box-shadow: 1px 1px 10px #7A6FF2;
+
+                & img {
+                    height: 100%;
+                    width: 100%;
+                }
+            }
+        }
+    }
+
+    // Description
+    .description {
+        margin-top: 50px;
+
+        & h3 {
+            @include subTitle;
+            margin-bottom: 10px;
+        }
+
+        & .description_container p {
+            color: #646464;
+            font-size: 17px;
+            line-height: 26px;
+            letter-spacing: .4px;
+        }
+    }
+
+    // Similar Projects
+    & .similar {
+        & h3 {
+            @include subTitle;
+        }
+
+        & .similar_container {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 20px;
+
+            & .similar_item {
+                width: 100%;
+                height: 200px;
+                box-shadow: 1px 1px 10px orangered;
+                position: relative;
+
+                & .img {
+                    height: 100%;
+                    width: 100%;
+
+                    & img {
+                        height: 100%;
+                        width: 100%;
+                    }
+                }
+
+                & .text {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    display: none; // will be "flex"
+                    flex-direction: column;
+                    align-items: center;
+                    justify-content: center;
+                    background-color: #9890f0d3;
+                    transition: .3s;
+
+                    & h3 {
+                        color: #fff;
+                        margin: 10px 0;
+                        font-size: 27px;
+                    }
+
+                    & p {
+                        color: #ddd;
+                        margin-top: 0;
+                    }
+                    
+                    & button {
+                        padding: 7px 12px;
+                        border-radius: 7px;
+                        border: none;
+                        background-color: orangered;
+                        color: #eee;
+                    }
+                }
+
+                &:hover .text {
+                    display: flex;
+                }
+            }
+        }
+    }
+}
+
+// Responsive
+@media (max-width: 1300px) {
+    .details {
+        padding: 125px 80px;
+    }    
+}
+
+@media (max-width: 1000px) {
+    .details {
+
+        // screenshorts
+        & .screenshorts .screenshorts_container {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        // Similar Projects
+        & .similar {
+            & .similar_container {
+                grid-template-columns: repeat(3, 1fr);
+                & .similar_item {
+                    & .text {
+                        & h3 {
+                            font-size: 25px;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}
+
+@media (max-width: 850px) {
+    .details {
+
+        // screenshorts
+        & .screenshorts .screenshorts_container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 30px;
+        }
+
+        // Similar Projects
+        & .similar .similar_container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 30px;
+        }
+    }    
+}
+
+@media (max-width: 768px) {
+    .details {
+        #{&}_main {
+            flex-direction: column;
+
+            & .img_section {
+                width: 80%;
+            }
+
+            & .details_section {
+                width: 80%;
+                padding: 20px 10px;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .details {
+        // Main
+        #{&}_main {
+
+            & .img_section {
+                width: 100%;
+            }
+
+            & .details_section {
+                width: 100%;
+            }
+        }
+
+        // screenshorts
+        & .screenshorts .screenshorts_container {
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 30px;
+        }
+
+        // Similar Projects
+        & .similar .similar_container {
+            grid-template-columns: repeat(1, 1fr);
+            grid-gap: 30px;
+        }
+    }    
+}
+
+
+@media (max-width: 500px) {
+    .details {
+        padding: 125px 70px;
+    }    
+}
+
+@media (max-width: 400px) {
+    .details {
+        padding: 125px 50px;
+    }    
+}
+
+@media (max-width: 350px) {
+    .details {
+        padding: 125px 25px;
+    }    
+}

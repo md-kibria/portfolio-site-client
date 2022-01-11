@@ -1,0 +1,10 @@
+$gradient: linear-gradient(to top right, #DAA1F2, #EC6392);
+$purple: #7A6FF2;
+
+@mixin flexCenter($direction: "row") {
+    display: flex;
+    flex-direction: $direction;
+    align-items: center;
+    justify-content: center;
+}
+

@@ -1,0 +1,102 @@
+.projects {
+    padding: 0 150px;
+    margin: 50px 0;
+    min-height: 100vh;
+
+    #{&}_title {
+        color: #7A6FF2;
+        font-size: 40px;
+        margin-top: 150px !important;
+        margin: 60px 0;
+        position: relative;
+        text-align: center;
+
+        & span {
+            color: #FF4182;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: calc(50% + 130px);
+            bottom: -10px;
+            background-image: url('../../public/img/Component 1 – 1.png');
+            background-size: 20px ;
+            background-repeat: no-repeat;
+            height: 60px;
+            width: 50px;
+            transform: rotate(35deg);
+        }
+    }
+
+    & .pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 10px;
+
+        & .pagination_item {
+            padding: 10px;
+            font-size: 18px;
+            color: chocolate;
+
+            &.active a {
+                text-decoration: overline;
+            }
+
+            &.disabled a {
+                color: rgb(226, 163, 118);
+            }
+        }
+    }
+
+}
+
+
+// Responsive
+
+@media (max-width: 1300px) {
+    .projects {
+        padding: 0 80px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .projects {
+        padding: 0 50px;
+    }
+}
+
+@media (max-width: 885px) {
+    .projects {
+        padding: 0 0px;
+    }
+}
+
+
+@media (max-width: 772px) {
+    .projects {
+        padding: 0 80px;
+    }
+}
+
+
+@media (max-width: 650px) {
+    .projects {
+        padding: 0 50px;
+    }
+}
+
+
+@media (max-width: 550px) {
+    .projects {
+        padding: 0 0;
+
+        #{&}_title {
+    
+            &::after {
+                display: none;
+            }
+        }
+    }
+}

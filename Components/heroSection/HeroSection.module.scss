@@ -1,0 +1,220 @@
+@import '../../styles/public';
+
+.heroSection {
+    min-height: 100vh;
+    width: 100%;
+    // padding: 0 150px;
+    background-image: $gradient;
+
+    & .heroSection_main {
+        min-height: 100vh;
+        display: flex;
+        padding: 0 150px;
+
+        & .hero_text {
+            width: 50%;
+            padding: 0 10px;
+            @include flexCenter(column);
+            align-items: flex-start;
+
+            & h1 {
+                color: #fff;
+                font-size: 40px;
+                font-weight: 600;
+                margin: 10px 0;
+                font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+                
+
+                & span {
+                    color: $purple;
+                }
+            }
+
+            & p {
+                color: #eee;
+                line-height: 25px;
+                font-size: 18px;
+                letter-spacing: .55px;
+            }
+
+            & .hero_btns {
+                display: flex;
+                margin: 15px 0;
+
+                & .btn_rm {
+                    background-color: $purple;
+                    padding: 10px 15px;
+                    margin: 0;
+                    color: #fff;
+                    font-size: 16px;
+                    margin-right: 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+
+                & .btn_pj {
+                    color: $purple;
+                    border: 1.8px solid $purple;
+                    padding: 10px 16px;
+                    font-size: 16px;
+                    margin-right: 15px;
+                    border-radius: 5px;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        & .hero_img {
+            width: 50%;
+            @include flexCenter;
+
+            & img {
+                width: 120%;
+            }
+        }
+    }
+
+    & .header_bottom_path {
+        width: 100%;
+        margin-bottom: -5px;
+        // position: absolute;
+        // left: 0;
+        // right: 0;
+        // bottom: -150px;
+        // height: 150px;
+    }
+}
+
+// Responsive
+
+@media (max-width: 1300px) {
+    .heroSection .heroSection_main {
+        padding: 0 80px;
+    }
+}
+
+@media (max-width: 1170px) {
+    .heroSection {
+        & .hero_text h1 {
+            padding-right: 70px;
+        }
+    }
+}
+
+@media (max-width: 900px) {
+    .heroSection {
+
+        & .heroSection_main {
+
+            & .hero_text h1 {
+                padding-right: 0px;
+                font-size: 40px;
+                line-height: 45px;
+                margin: 10px 0;
+            }
+
+            & .hero_text p {
+                font-size: 17px;
+                line-height: 22px;
+            }
+
+            & .hero_img img {
+                width: 150%;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .heroSection {
+        #{&}_main {
+            padding: 0 100px;
+        }
+
+        & .heroSection_main {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-top: 50px;
+
+                & .hero_text {
+                    width: 100%;
+                    align-items: center;
+                    justify-content: center;
+                    margin-top: 50px;
+
+                    &  h1 {
+                        font-size: 35px;
+                        line-height: 45px;
+                        margin: 5px 0;
+                        text-align: center;
+                    }
+
+                    & p {
+                        font-size: 18px;
+                        line-height: 25px;
+                        text-align: center;
+                    }
+                }
+                
+
+                & .hero_img img {
+                    width: 200%;
+                    margin-top: 50px;
+                    display: block;
+                }
+        
+        }
+    }
+}
+
+@media (max-width: 650px) {
+    .heroSection {
+        min-height: 120vh;
+        padding-bottom: 20px;
+
+        #{&}_main {
+            padding: 50px;
+        }
+
+        .header_bottom_path {
+            display: none;
+            visibility: hidden;
+        }
+    }
+}
+
+@media (max-width: 425px) {
+    .heroSection  {
+        min-height: 110vh;
+    
+    & .heroSection_main  {
+        padding: 50px 20px;
+        
+    }
+}
+}
+
+
+
+@media (max-width: 350px) {
+    .heroSection {
+
+        & .heroSection_main {
+            padding: 30px 20px;
+
+                & .hero_text {
+
+                    &  h1 {
+                        font-size: 35px;
+                        line-height: 40px;
+                    }
+
+                    & p {
+                        font-size: 17px;
+                        line-height: 23px;
+                    }
+                }
+        }
+    }
+}
