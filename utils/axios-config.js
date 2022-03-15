@@ -1,7 +1,7 @@
 // External Imports
 const axios = require('axios')
 
-let axiosConfig = (host, token) => {
+let axiosConfig = (host) => {
     axios.defaults.baseURL = host || ''
 }
 

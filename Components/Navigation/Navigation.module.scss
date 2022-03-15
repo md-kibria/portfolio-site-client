@@ -14,6 +14,17 @@
     transition: .3s;
     z-index: 999;
 
+    & .goBack {
+        color: #fff;
+        font-size: 30px;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+            color: #ddd;
+        }
+    }
+
     #{&}_logo {
         & .img {
             margin-top: 10px;
@@ -38,9 +49,10 @@
                 margin: 0 2px;
                 padding: 10px;
 
-                & a {
+                & a, p {
                     color: #fff;
                     transition: .2s;
+                    cursor: pointer;
 
                     &:hover {
                         color: #7A6FF2;

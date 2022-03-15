@@ -1,10 +1,12 @@
 import styles from './Contact.module.scss'
-import { useEffect, useReducer } from 'react'
+import { useEffect, useReducer, useRef } from 'react'
 import axios from 'axios'
 import { initialState, reducer } from './store'
 import { useForm } from 'react-hook-form'
 
-const Contact = () => {
+const Contact = ({ setContactOT }) => {
+
+    const contactRef = useRef()
 
     // Use reducer
     const [state, dispatch] = useReducer(reducer, initialState)
@@ -27,6 +29,10 @@ const Contact = () => {
                 }
             })
         }
+    }, [])
+
+    useEffect(() => {
+        setContactOT(contactRef.current.offsetTop)
     }, [])
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
@@ -56,14 +62,14 @@ const Contact = () => {
     }
 
     return (
-        <div className={styles.contact}>
+        <div className={styles.contact} ref={contactRef}>
             <h2 className={styles.contact_title}><span>Contact</span> Me</h2>
             {/* Contact Container */}
             <div className={styles.contact_container}>
                 {/* Contact Message */}
                 <form className={styles.contact_msg} onSubmit={handleSubmit(onSubmit)}>
                     <div className={styles.msg_container}>
-                    {state.msg && <h3 style={{color: 'green', fontWeight: '300'}}>{state.msg}</h3>}
+                        {state.msg && <h3 style={{ color: 'green', fontWeight: '300' }}>{state.msg}</h3>}
                         <div className={styles.name_email_section}>
                             <div className={styles.name_email}>
                                 <input
@@ -71,7 +77,7 @@ const Contact = () => {
                                     name="name"
                                     id="name"
                                     placeholder="Your name..."
-                                    {...register('name', {required: true})}
+                                    {...register('name', { required: true })}
                                 />
                                 {errors.name && <span className={styles.formError}>This field is required</span>}
                                 {state.errors.name && <span className={styles.formError}>{state.errors.name.msg}</span>}
@@ -82,7 +88,7 @@ const Contact = () => {
                                     name="email"
                                     id=""
                                     placeholder="Your email..."
-                                    {...register('email', {required: true})}
+                                    {...register('email', { required: true })}
                                 />
                                 {errors.email && <span className={styles.formError}>This field is required</span>}
                                 {state.errors.email && <span className={styles.formError}>{state.errors.email.msg}</span>}
@@ -95,7 +101,7 @@ const Contact = () => {
                                 cols="30"
                                 rows="10"
                                 placeholder="Your message..."
-                                {...register('body', {required: true})}
+                                {...register('body', { required: true })}
                             />
                             {errors.body && <span className={styles.formError}>This field is required</span>}
                             {state.errors.body && <span className={styles.formError}>{state.errors.body.msg}</span>}

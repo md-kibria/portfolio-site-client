@@ -1,16 +1,15 @@
 import Footer from '../footer/Footer'
 import Navigation from '../Navigation/Navigation'
-import styles from './Layout.module.scss'
 
-const Layout = ({home, children}) => {
+const Layout = ({ home, children, offsets }) => {
     return (
-        <div className={styles.layout}>
-            <Navigation home={home} />
+        <>
+            <Navigation home={home} offsets={offsets} />
             <main>
                 {children}
             </main>
             <Footer />
-        </div>
+        </>
     )
 }
 

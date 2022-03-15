@@ -71,22 +71,25 @@
 
         & .about_btns {
             
-            & a {
+            & a, p {
                 padding: 10px 15px;
-                margin: 10px 10px 0 0;
+                margin: 0px 10px 0 0;
                 border-radius: 10px;
                 display: inline-block;
+                cursor: pointer;
+                font-size: 17px;
             }
 
-           & a:nth-child(1) {
+           & a {
                border: 1px solid #EC6392;
                color: #EC6392;
            }
 
-           & a:nth-child(2) {
+           & p {
             background-color:#EC6392;
             color: #fff;
-            padding: 10px 20px;
+            padding: 9px 20px;
+            font-size: 16px;
         }
         }
     }

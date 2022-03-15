@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+// import React, { useContext } from 'react'
 import Link from 'next/link'
 import styles from './HeroSection.module.scss'
 import withSiteData from '../HOC/index'
@@ -12,9 +12,9 @@ const Hero = ({ siteData }) => {
                     {/* Hero text section */}
                     <div className={styles.hero_text}>
                         {/* Hero title */}
-                        <h1>{siteData.data.heroTitle1} <span>{siteData.data.heroTitle2}</span></h1>
+                        <h1>{siteData.heroTitle1} <span>{siteData.heroTitle2}</span></h1>
                         {/* Hero Text */}
-                        <p>{siteData.data.heroDesc}</p>
+                        <p>{siteData.heroDesc}</p>
                         {/* hero button */}
                         <div className={styles.hero_btns}>
                             <Link href="/about">
@@ -27,7 +27,7 @@ const Hero = ({ siteData }) => {
                     </div>
                     {/* Hero Image Section */}
                     <div className={styles.hero_img}>
-                        <img src={siteData.data.heroImg && `${process.env.NEXT_PUBLIC_LINK}/uploads/${siteData.data.heroImg}`} alt="" />
+                        <img src={siteData.heroImg && `${process.env.NEXT_PUBLIC_URL}/uploads/${siteData.heroImg}`} alt="Image" />
                     </div>
                 </div>
                 <img className={styles.header_bottom_path} src="/img/Path 1.png" alt="" />

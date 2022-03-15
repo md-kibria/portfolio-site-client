@@ -1,7 +1,7 @@
 import SkillItem from './skillItem/skillItem'
 import styles from './Skills.module.scss'
 import axios from 'axios'
-import { useEffect, useReducer } from 'react'
+import { useEffect, useReducer, useRef } from 'react'
 
 // Initial State
 const initialState = {
@@ -32,10 +32,15 @@ const reducer = (state, action) => {
     }
 }
 
-const Skills = () => {
+const Skills = ({ setSkillOT }) => {
 
     // Defind Use Reducer
     const [state, dispatch] = useReducer(reducer, initialState)
+
+    const skillRef = useRef()
+    useEffect(() => {
+        setSkillOT(skillRef.current.offsetTop)
+    }, [])
 
     // Define Use State
     useEffect(async () => {
@@ -59,69 +64,70 @@ const Skills = () => {
             })
         }
     }, [])
-    
-    // If Loading
-    if(state.isLoading) {
-        return <h1 style={{textAlign: 'center', marginTop: '200px' }}>Loading...</h1>
-    } 
-    
+
+
     // If skill items found
-    if (state.skills.length !== 0 ) {
     return (
-        <div className={styles.skills}>
+        <div className={styles.skills} ref={skillRef}>
             {/* Skill Title */}
             <h2 className={styles.skills_title}><span>My</span> Skills</h2>
+
+            {/* Loading Message */}
+            {state.isLoading && <h1 style={{ textAlign: 'center', marginTop: '200px' }} ref={skillRef}>Loading...</h1>}
 
             {/* Skill Container */}
             <div className={styles.skills_container}>
 
-                { state.skills.map(skill => (
-                        // Skill Item
-                        <SkillItem key={skill._id} img={`${process.env.NEXT_PUBLIC_LINK}/uploads/${skill.img}`} title={skill.title} desc={skill.description} />
-                    ))
+                {state.skills.length !== 0 && state.skills.map(skill => (
+                    // Skill Item
+                    <SkillItem key={skill._id} img={`${process.env.NEXT_PUBLIC_URL}/uploads/${skill.img}`} title={skill.title} desc={skill.description} />
+                ))
                 }
 
-                {/* Html */}
-                <SkillItem img="/img/html.png" title="Html" desc="" />
+                {/* Error Message */}
+                {state.errors && state.errors.authentication && state.errors.authentication.msg}
 
-                {/* Css */}
-                <SkillItem img="/img/css.png" title="Css" desc="" />
-
-                {/* Js */}
-                <SkillItem img="/img/js.png" title="JavaScript" desc="" />
-
-                {/* React */}
-                <SkillItem img="/img/react.png" title="React JS" desc="" />
-
-                {/* Redux */}
-                <SkillItem img="/img/redux.png" title="Redux" desc="" />
-
-                {/* Sass */}
-                <SkillItem img="/img/sass.png" title="Sass" desc="" />
-
-                {/* Next */}
-                <SkillItem img="/img/next.png" title="Next JS" desc="" />
-
-                {/* Material UI */}
-                <SkillItem img="/img/material-ui.png" title="Material UI" desc="" />
-
-                {/* Bootstrap */}
-                <SkillItem img="/img/bootstrap.png" title="Bootstrap" desc="" />
-
-                {/* Express */}
-                <SkillItem img="/img/expressjs.png" title="Express" desc="" />
-
-                {/* NodeJS */}
-                <SkillItem img="/img/nodejs.png" title="Node JS" desc="" />
-
-                {/* MongoDB */}
-                <SkillItem img="/img/mongodb.png" title="MongoDB" desc="" />
             </div>
         </div>
-    ) } else if(state.errors) {
-        console.log(state.errors)
-        return state.errors.authentication && state.errors.authentication.msg
-    }
+    )
+
 }
 
 export default Skills
+
+
+{/* Html */ }
+{/* <SkillItem img="/img/html.png" title="Html" desc="" /> */ }
+
+{/* Css */ }
+{/* <SkillItem img="/img/css.png" title="Css" desc="" /> */ }
+
+{/* Js */ }
+{/* <SkillItem img="/img/js.png" title="JavaScript" desc="" /> */ }
+
+{/* React */ }
+{/* <SkillItem img="/img/react.png" title="React JS" desc="" /> */ }
+
+{/* Redux */ }
+{/* <SkillItem img="/img/redux.png" title="Redux" desc="" /> */ }
+
+{/* Sass */ }
+{/* <SkillItem img="/img/sass.png" title="Sass" desc="" /> */ }
+
+{/* Next */ }
+{/* <SkillItem img="/img/next.png" title="Next JS" desc="" /> */ }
+
+{/* Material UI */ }
+{/* <SkillItem img="/img/material-ui.png" title="Material UI" desc="" /> */ }
+
+{/* Bootstrap */ }
+{/* <SkillItem img="/img/bootstrap.png" title="Bootstrap" desc="" /> */ }
+
+{/* Express */ }
+{/* <SkillItem img="/img/expressjs.png" title="Express" desc="" /> */ }
+
+{/* NodeJS */ }
+{/* <SkillItem img="/img/nodejs.png" title="Node JS" desc="" /> */ }
+
+{/* MongoDB */ }
+{/* <SkillItem img="/img/mongodb.png" title="MongoDB" desc="" /> */ }

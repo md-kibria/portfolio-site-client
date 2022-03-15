@@ -1,13 +1,17 @@
 import styles from './Projects.module.scss'
 import SingleProject from '../singleProject/SingleProject'
 import Link from 'next/link'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, setProjectOT }) => {
 
     // Ref
     const projectRef = useRef(null)
+
+    useEffect(() => {
+        setProjectOT(projectRef.current.offsetTop)
+    }, [])
 
     return (
         <div className={styles.projects} ref={projectRef}>
@@ -20,7 +24,7 @@ const Projects = ({ projects }) => {
                     <SingleProject
                         key={project._id}
                         id={project._id}
-                        img={`${process.env.NEXT_PUBLIC_LINK}/uploads/${project.thumbnail}`}
+                        img={`${process.env.NEXT_PUBLIC_URL}/uploads/${project.thumbnail}`}
                         title={project.title}
                         tags={project.tags}
                         desc={project.description}

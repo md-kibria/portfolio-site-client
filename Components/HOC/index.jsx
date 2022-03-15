@@ -3,7 +3,7 @@ import { useReducer, useEffect } from 'react'
 import {initialState, reducer} from './store'
 
 const withSiteData = (OriginalComponent) => {
-    const NewComponent = () => {
+    const NewComponent = (props) => {
 
         // Use reducer
         const [state, dispatch] = useReducer(reducer, initialState)
@@ -32,7 +32,7 @@ const withSiteData = (OriginalComponent) => {
         }, [])
 
         return (
-            <OriginalComponent siteData={state} />
+            <OriginalComponent {...props} siteData={state.data} />
         )
     }
 

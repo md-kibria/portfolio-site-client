@@ -11,7 +11,7 @@ const ProjectDetails = ({ project }) => {
             <div className={styles.details_main}>
                 {/* Image Section */}
                 <div className={styles.img_section}>
-                    <img src={`${process.env.NEXT_PUBLIC_LINK}/uploads/${project.thumbnail}`} alt="" />
+                    <img src={`${process.env.NEXT_PUBLIC_URL}/uploads/${project.thumbnail}`} alt={project.title} />
                 </div>
 
                 {/* Details Section */}
@@ -71,7 +71,7 @@ const ProjectDetails = ({ project }) => {
                         {project.screenshot.map(ss => (
                             // Short Item 
                             <div className={styles.short_item}>
-                                <img src={`${host}/uploads/${ss}`} alt="" />
+                                <img src={`${process.env.NEXT_PUBLIC_URL}/uploads/${ss}`} alt="ss" />
                             </div>
                         ))}
 
@@ -93,8 +93,12 @@ const ProjectDetails = ({ project }) => {
             ) : ''
             }
 
-{/* I HAVE NEED TO WORKING ON THIS ""SIMILAR PROJECT"" SECTION */}
+            {/* I HAVE NEED TO WORKING ON THIS ""RELATED PROJECT"" SECTION */}
 
+
+     
+        <div style={{display: 'none'}}>{`
+        
             {/* Similar Projects */}
             <div className={styles.similar}>
                 <h3>Similar Projects</h3>
@@ -103,7 +107,7 @@ const ProjectDetails = ({ project }) => {
                     <div className={styles.similar_item}>
                         {/* Img Section */}
                         <div className={styles.img}>
-                            <img src="/img/p3.jpeg" alt="" />
+                            <img src="/img/p3.jpeg" alt="project title" />
                         </div>
                         {/* Text Section */}
                         <div className={styles.text}>
@@ -117,7 +121,7 @@ const ProjectDetails = ({ project }) => {
                     <div className={styles.similar_item}>
                         {/* Img Section */}
                         <div className={styles.img}>
-                            <img src="/img/p7.jpeg" alt="" />
+                            <img src="/img/p7.jpeg" alt="project title" />
                         </div>
                         {/* Text Section */}
                         <div className={styles.text}>
@@ -131,7 +135,7 @@ const ProjectDetails = ({ project }) => {
                     <div className={styles.similar_item}>
                         {/* Img Section */}
                         <div className={styles.img}>
-                            <img src="/img/p5.jpeg" alt="" />
+                            <img src="/img/p5.jpeg" alt="project title" />
                         </div>
                         {/* Text Section */}
                         <div className={styles.text}>
@@ -145,7 +149,7 @@ const ProjectDetails = ({ project }) => {
                     <div className={styles.similar_item}>
                         {/* Img Section */}
                         <div className={styles.img}>
-                            <img src="/img/p2.jpeg" alt="" />
+                            <img src="/img/p2.jpeg" alt="project title" />
                         </div>
                         {/* Text Section */}
                         <div className={styles.text}>
@@ -157,6 +161,9 @@ const ProjectDetails = ({ project }) => {
 
                 </div>
             </div>
+
+            `} </div>
+
         </div>
     )
 }

@@ -1,24 +1,28 @@
 import styles from './Projects.module.scss'
-
 import SingleProject from '../singleProject/SingleProject'
-import Link from 'next/link'
 
 
-const Projects = ({ projects }) => {
+const Projects = ({ projects, setPageIndex, totalPage, pageIndex }) => {
 
-    console.log(projects)
+    const setCurrentPage = value => {
+        console.log(value)
+        setPageIndex(value)
+    }
 
-    // Pagination Functions
-    let postPerPage = 10
-    let totalPosts = 100 //projects.length
-    let totalPages = totalPosts / postPerPage
+    const goPrev = () => {
+        if(pageIndex <= totalPage && pageIndex !== 1) {
+            setPageIndex(v => v - 1)
+        }
+    }
 
-    let currPage = 4
-    let numberOfEnd = postPerPage * currPage
-    let numberOfStart = numberOfEnd - postPerPage + 1
+    const goNext = () => {
+        if (pageIndex < totalPage) {
+            setPageIndex(v =>  v + 1)
+        }
+    }
 
-    // console.log({ totalPages, numberOfEnd, numberOfStart })
-    console.log({ totalPages, numberOfEnd, numberOfStart })
+    let pgArr = Array(totalPage)
+    pgArr.fill('*')
 
     return (
         <div className={styles.projects}>
@@ -31,26 +35,29 @@ const Projects = ({ projects }) => {
 
                     <div className={styles.projects_container}>
                         {projects.map(project => (
-                            <SingleProject key={project._id} img={project.thumbnail && `${process.env.NEXT_PUBLIC_LINK}/uploads/${project.thumbnail}`} title={project.title} desc={project.description} />
+                            <SingleProject
+                                key={project._id}
+                                id={project._id}
+                                img={project.thumbnail && `${process.env.NEXT_PUBLIC_URL}/uploads/${project.thumbnail}`}
+                                title={project.title}
+                                desc={project.description}
+                            />
                         ))}
                     </div>
 
                     <ul className={styles.pagination}>
-                        <li className={styles.pagination_item + " " + styles.disabled}>
-                            <Link href="/">«</Link>
-                        </li>
-                        <li className={styles.pagination_item + " " + styles.active}>
-                            <Link href="/">1</Link>
+                        <li className={`${styles.pagination_item} ${pageIndex <= totalPage && pageIndex === 1 ? styles.disabled : ''}`}>
+                            <p onClick={goPrev}>«</p>
                         </li>
 
-                        <li className={styles.pagination_item}>
-                            <Link href="/">2</Link>
-                        </li>
-                        <li className={styles.pagination_item}>
-                            <Link href="/">3</Link>
-                        </li>
-                        <li className={styles.pagination_item}>
-                            <Link href="/">»</Link>
+                        {pgArr.map((v, i) => (
+                            <li key={i} className={`${styles.pagination_item} ${pageIndex === i + 1 ? styles.active : ''}`}>
+                                <p onClick={() => setCurrentPage(i + 1)}>{i + 1}</p>
+                            </li>
+                        ))}
+
+                        <li className={`${styles.pagination_item} ${pageIndex >= totalPage ? styles.disabled : ''}`}>
+                            <p onClick={goNext}>»</p>
                         </li>
                     </ul>
 

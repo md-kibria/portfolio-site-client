@@ -8,7 +8,7 @@ const About = ({siteData}) => {
             <h2 className={styles.title}>About <span>Me</span></h2>
 
             <div className={styles.text}>
-                <p>{siteData.data.aboutText || 'Working on it!'}</p>
+                <p>{siteData.aboutText || 'Working on it!'}</p>
             </div>
         </div>
     )

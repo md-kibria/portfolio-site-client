@@ -3,14 +3,14 @@ import styles from './Footer.module.scss'
 import withSiteData from '../HOC'
 import Image from 'next/image'
 import { useForm } from 'react-hook-form'
-import { useContext, useState } from 'react'
+import { useState } from 'react'
 import axios from 'axios'
 
 
 const Footer = ({ siteData }) => {
 
     // Data from backend
-    const { socialLinks, copyright, footerLogo } = siteData.data
+    const { socialLinks, copyright, footerLogo } = siteData || {socialLinks: [], copyright: '', footerLogo: ''}
 
     // Error And Message State
     const [subsInfo, setSubsInfo] = useState({ msg: '', errors: {} })
@@ -42,7 +42,7 @@ const Footer = ({ siteData }) => {
 
     return (
         <div className={styles.footer}>
-            <img className={styles.footer_top_img} src="/img/Path 1.png" alt="" />
+            <img className={styles.footer_top_img} src="/img/Path 1.png" alt="path" />
             <div className={styles.footer_container}>
                 <h3>Subscribe our news letter to get letest notifications from us</h3>
                 <p>You can unsubscribe at any time</p>
@@ -60,6 +60,7 @@ const Footer = ({ siteData }) => {
 
                 </form>
                 {errors.email && <p style={{ color: 'red', textAlign: 'center' }}>Email is required</p>}
+                {subsInfo.errors.email && <p style={{ color: 'red', textAlign: 'center' }}>{subsInfo.errors.email.msg}</p>}
 
                 <div className={styles.footer_navigation}>
                     {/* Footer Nav Item */}
@@ -126,9 +127,10 @@ const Footer = ({ siteData }) => {
                     {footerLogo ? (
                         <div className={styles.img}>
                             <Image
-                                src={`${process.env.NEXT_PUBLIC_LINK}/uploads/${footerLogo}`}
+                                src={`${process.env.NEXT_PUBLIC_URL}/uploads/${footerLogo}`}
                                 height={20}
                                 width={70}
+                                alt="logo"
                             />
                         </div>
                     ) : (

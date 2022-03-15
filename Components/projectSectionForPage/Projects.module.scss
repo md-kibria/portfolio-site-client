@@ -39,13 +39,14 @@
             padding: 10px;
             font-size: 18px;
             color: chocolate;
+            cursor: pointer;
 
-            &.active a {
+            &.active p {
                 text-decoration: overline;
             }
 
-            &.disabled a {
-                color: rgb(226, 163, 118);
+            &.disabled p {
+                color: rgb(241, 193, 158);
             }
         }
     }
