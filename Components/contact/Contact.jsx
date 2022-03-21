@@ -11,29 +11,33 @@ const Contact = ({ setContactOT }) => {
     // Use reducer
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    useEffect(async () => {
-        try {
-            const res = await axios.get('contact')
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                const res = await axios.get('contact')
 
-            dispatch({
-                type: 'LOAD_CONTACT',
-                payload: {
-                    contactInfo: res.data.contactInfo
-                }
-            })
-        } catch (error) {
-            dispatch({
-                type: 'ERROR',
-                payload: {
-                    errors: error.response.data.errors
-                }
-            })
+                dispatch({
+                    type: 'LOAD_CONTACT',
+                    payload: {
+                        contactInfo: res.data.contactInfo
+                    }
+                })
+            } catch (error) {
+                dispatch({
+                    type: 'ERROR',
+                    payload: {
+                        errors: error.response.data.errors
+                    }
+                })
+            }
         }
+
+        fetchData()
     }, [])
 
     useEffect(() => {
         setContactOT(contactRef.current.offsetTop)
-    }, [])
+    }, [setContactOT])
 
     const { register, handleSubmit, formState: { errors }, reset } = useForm()
     const onSubmit = async (data) => {
@@ -113,7 +117,7 @@ const Contact = ({ setContactOT }) => {
                 {/* Contact Address */}
                 {!state.isLoading ? (
                     <div className={styles.contact_addr}>
-                        <h3>Let's contact with me</h3>
+                        <h3>Let&apos;s contact with me</h3>
                         <ul>
                             {state.contactInfo.address && (
                                 <li>

@@ -16,11 +16,11 @@ const About = ({ siteData, setAboutOT }) => {
         } else {
             setIsMid(false)
         }
-    })
+    }, [])
 
     useEffect(() => {
         setAboutOT(aboutRef.current.offsetTop)
-    }, [])
+    }, [setAboutOT])
 
     const handleSaveResume = () => {
         saveResume(siteData.resume)

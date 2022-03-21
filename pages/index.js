@@ -24,7 +24,7 @@ export default function Home({ data, error }) {
       projectOT,
       contactOT
     })
-  }, [aboutOT, skillOT, projectOT, contactOT])
+  }, [aboutOT, skillOT, projectOT, contactOT, offsets])
 
   return (
     <Layout home="true" offsets={offsets}>

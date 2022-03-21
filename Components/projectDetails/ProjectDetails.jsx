@@ -70,7 +70,7 @@ const ProjectDetails = ({ project }) => {
 
                         {project.screenshot.map(ss => (
                             // Short Item 
-                            <div className={styles.short_item}>
+                            <div key={ss} className={styles.short_item}>
                                 <img src={`${process.env.NEXT_PUBLIC_URL}/uploads/${ss}`} alt="ss" />
                             </div>
                         ))}

@@ -40,29 +40,33 @@ const Skills = ({ setSkillOT }) => {
     const skillRef = useRef()
     useEffect(() => {
         setSkillOT(skillRef.current.offsetTop)
-    }, [])
+    }, [setSkillOT])
 
     // Define Use State
-    useEffect(async () => {
-        try {
-            // Hit the skills backend url
-            let res = await axios.get('/skills')
-            // If data found
-            dispatch({
-                type: 'LOAD_DATA',
-                payload: {
-                    data: res.data.allSkills
-                }
-            })
-        } catch (error) {
-            // If error occured
-            dispatch({
-                type: 'ERROR',
-                payload: {
-                    errors: error.response.data.errors
-                }
-            })
+    useEffect(() => {
+        async function fetchData() {
+            try {
+                // Hit the skills backend url
+                let res = await axios.get('/skills')
+                // If data found
+                dispatch({
+                    type: 'LOAD_DATA',
+                    payload: {
+                        data: res.data.allSkills
+                    }
+                })
+            } catch (error) {
+                // If error occured
+                dispatch({
+                    type: 'ERROR',
+                    payload: {
+                        errors: error.response.data.errors
+                    }
+                })
+            }
         }
+
+        fetchData()
     }, [])
 
 

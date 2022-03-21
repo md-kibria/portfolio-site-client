@@ -2,7 +2,7 @@ import Head from 'next/head'
 import { useRouter } from 'next/dist/client/router'
 import styles from './404.module.scss'
 
-const notFound = () => {
+const NotFound = () => {
 
     // Route
     const route = useRouter()
@@ -24,4 +24,4 @@ const notFound = () => {
     )
 }
 
-export default notFound
+export default NotFound

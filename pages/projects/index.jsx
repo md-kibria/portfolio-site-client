@@ -12,12 +12,16 @@ const Projects = () => {
 
     const postPerPage = 10
 
-    useEffect(async () => {
-        const res = await axios.get(`projects?post=${postPerPage}&page=${pageIndex}`)
-        setData(res.data)
+    useEffect(() => {
+        async function fetchData() {
+            const res = await axios.get(`projects?post=${postPerPage}&page=${pageIndex}`)
+            setData(res.data)
 
-        const resTotalPg = await axios.get(`projects`)
-        setTotalPage(Math.ceil(resTotalPg.data.total / postPerPage))
+            const resTotalPg = await axios.get(`projects`)
+            setTotalPage(Math.ceil(resTotalPg.data.total / postPerPage))
+        }
+
+        fetchData()
     }, [pageIndex])
 
     return (
@@ -25,12 +29,12 @@ const Projects = () => {
             <Head>
                 <title>Projects | Md Kibria</title>
             </Head>
-                <ProjectsSection 
-                    pageIndex={pageIndex} 
-                    setPageIndex={setPageIndex} 
-                    totalPage={totalPage}
-                    projects={data.projects || data} 
-                />
+            <ProjectsSection
+                pageIndex={pageIndex}
+                setPageIndex={setPageIndex}
+                totalPage={totalPage}
+                projects={data.projects || data}
+            />
         </Layout>
     )
 }

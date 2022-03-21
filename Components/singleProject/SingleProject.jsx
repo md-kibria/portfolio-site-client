@@ -13,7 +13,7 @@ const SingleProject = ({ img, title, tags, desc, id }) => {
         } else {
             setIsSmall(false)
         }
-    })
+    }, [setIsSmall])
 
     let tagsArr = tags || []
     let projectTags = tagsArr.join(', ')

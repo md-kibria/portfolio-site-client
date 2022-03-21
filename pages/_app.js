@@ -12,7 +12,7 @@ function MyApp({ Component, pageProps }) {
   axiosConfig(host)
   useEffect(() => {
     axiosConfig(host)
-  }, [])
+  }, [host])
 
 
   return (

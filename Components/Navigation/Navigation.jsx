@@ -16,7 +16,7 @@ const Navigation = ({ home, offsets }) => {
     const [resume, setResume] = useState('')
 
     // Set BG color if scroll 40px top
-    useEffect(async () => {
+    useEffect(() => {
         window.addEventListener('scroll', () => {
             if (window.scrollY > 40) {
                 setShowNavBg(true)
@@ -25,17 +25,21 @@ const Navigation = ({ home, offsets }) => {
             }
         })
 
-        // Get Logo From Backend Server
-        const res = await axios.get('siteInfo')
+        async function fetchData() {
+            // Get Logo From Backend Server
+            const res = await axios.get('siteInfo')
 
-        // Set logo 
-        if (res.data.siteInfo.logo) {
-            setLogo(res.data.siteInfo.logo)
-            setResume(res.data.siteInfo.resume)
-        } else {
-            setLogo('')
-            setResume('')
+            // Set logo 
+            if (res.data.siteInfo.logo) {
+                setLogo(res.data.siteInfo.logo)
+                setResume(res.data.siteInfo.resume)
+            } else {
+                setLogo('')
+                setResume('')
+            }
         }
+
+        fetchData()
 
     }, [])
 

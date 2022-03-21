@@ -11,7 +11,7 @@ const Projects = ({ projects, setProjectOT }) => {
 
     useEffect(() => {
         setProjectOT(projectRef.current.offsetTop)
-    }, [])
+    }, [setProjectOT])
 
     return (
         <div className={styles.projects} ref={projectRef}>
