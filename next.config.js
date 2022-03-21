@@ -1,6 +1,6 @@
 module.exports = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost', 'netlify.com', 'example.com']
+    domains: ['localhost', 'netlify.com', 'portfolio-server-backend.herokuapp.com']
   },
 }
