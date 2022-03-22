@@ -93,12 +93,13 @@
             transition: .3s;
             
             & .nav_item {
-                margin: 0 2px;
-                padding: 10px;
+                margin: 0px 2px;
+                padding: 0px 10px;
 
-                & a {
+                & p, a {
                     color: #fff;
                     font-size: 17px;
+                    margin: 10px 0;
                 }
             }
         }

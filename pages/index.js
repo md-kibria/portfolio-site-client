@@ -18,13 +18,13 @@ export default function Home({ data, error }) {
 
   useEffect(() => {
     setOffset({
-      ...offsets,
+      // ...offsets,
       aboutOT,
       skillOT,
       projectOT,
       contactOT
     })
-  }, [aboutOT, skillOT, projectOT, contactOT, offsets])
+  }, [aboutOT, skillOT, projectOT, contactOT])
 
   return (
     <Layout home="true" offsets={offsets}>
